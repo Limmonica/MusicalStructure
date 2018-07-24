@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/album_cover_image_view"
+        style="@style/SongAlbumImage"
+        android:contentDescription="@string/album_cover_image_desc"
+        tools:src="@drawable/metallica_metallica" />
+
+    <LinearLayout style="@style/LayoutListItem">
+
+        <TextView
+            android:id="@+id/song_title_text_view"
+            style="@style/SongTitleTextView"
+            tools:text="Nothing Else Matters" />
+
+        <LinearLayout style="@style/LayoutListSubItem">
+
+            <TextView
+                android:id="@+id/album_title_text_view"
+                style="@style/AlbumTitleSongsList"
+                tools:text="Metallica" />
+
+            <ImageView
+                style="@style/BulletStyle"
+                android:contentDescription="@null"
+                android:src="@drawable/bullet" />
+
+            <TextView
+                android:id="@+id/artist_name_text_view"
+                style="@style/ArtistNameSongsList"
+                tools:text="Metallica" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

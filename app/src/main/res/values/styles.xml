@@ -1,0 +1,148 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryText</item>
+        <item name="android:textColorTertiary">@color/colorPrimaryText</item>
+    </style>
+
+    <!-- Main Activity -->
+    <style name="MainCategories">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_cat</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:drawablePadding">@dimen/padding_drawable_bottom</item>
+    </style>
+
+    <!-- Albums & Artists Grid Items -->
+    <style name="ImageAlbumArtist">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center|top</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="AlbumTitleYear">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/text_size_album_details</item>
+    </style>
+
+    <style name="AlbumArtistName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin_bold</item>
+        <item name="android:textSize">@dimen/text_size_album_details</item>
+    </style>
+
+    <!-- Songs List Elements -->
+
+    <style name="SongAlbumImage">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/margin_songs_list</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="LayoutListItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/margin_songs_list</item>
+        <item name="android:layout_weight">9</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SongTitleTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin_bold</item>
+        <item name="android:textSize">@dimen/text_size_song_title</item>
+    </style>
+
+    <style name="LayoutListSubItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AlbumTitleSongsList">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin_medium</item>
+    </style>
+
+    <style name="BulletStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/margin_bullet</item>
+        <item name="android:paddingRight">@dimen/margin_bullet</item>
+    </style>
+
+    <style name="ArtistNameSongsList">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/cabin</item>
+    </style>
+
+    <!-- Now Playing Activity-->
+
+    <style name="AlbumImageNowPlaying">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">@dimen/padding_layout</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="PlayingTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/margin_time</item>
+        <item name="android:textSize">@dimen/text_size_time</item>
+    </style>
+
+    <style name="SeekBarStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/padding_layout</item>
+        <item name="android:paddingRight">@dimen/padding_layout</item>
+        <item name="android:thumbTint" tools:targetApi="lollipop">@color/colorPrimaryText</item>
+        <item name="android:progressTint" tools:targetApi="lollipop">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="ButtonsLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="RewForwButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_buttons</item>
+    </style>
+
+</resources>

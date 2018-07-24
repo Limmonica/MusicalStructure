@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="2"
+        android:columnOrderPreserved="true"
+        android:paddingTop="@dimen/padding_layout">
+
+        <TextView
+            android:id="@+id/library"
+            style="@style/MainCategories"
+            android:drawableTop="@drawable/library"
+            android:text="@string/library_textview" />
+
+        <TextView
+            android:id="@+id/albums"
+            style="@style/MainCategories"
+            android:drawableTop="@drawable/albums"
+            android:text="@string/albums_textview" />
+
+        <TextView
+            android:id="@+id/artists"
+            style="@style/MainCategories"
+            android:drawableTop="@drawable/artists"
+            android:text="@string/artists_textview" />
+
+    </GridLayout>
+
+</ScrollView>

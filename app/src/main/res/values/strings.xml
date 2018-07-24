@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MusicalStructure</string>
+    <string name="time_playing_update">%02d:%02d</string>
+    <string name="song_name_playing">%02d:%02d</string>
+    <string name="time_playing_song">%02d:%02d</string>
+    <string name="message_no_jump">Cannot jump forward 5 seconds</string>
+    <string name="message_no_jump_back">Cannot jump backward 5 seconds</string>
+    <string name="library_textview">Library</string>
+    <string name="albums_textview">Albums</string>
+    <string name="artists_textview">Artists</string>
+    <string name="album_cover_image_desc">Album Cover Image</string>
+    <string name="dash_separator_album">-</string>
+    <string name="artist_image_view">Artist Image</string>
+    <string name="button_rewind_desc">Rewind Button</string>
+    <string name="button_play_desc">Play Button</string>
+    <string name="button_forward_desc">Forward Button</string>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_layout"
+    tools:context=".NowPlaying">
+
+    <ImageView
+        android:id="@+id/nowplaying_album_imageview"
+        style="@style/AlbumImageNowPlaying"
+        android:contentDescription="@string/album_cover_image_desc"
+        tools:src="@drawable/metallica_metallica" />
+
+    <TextView
+        android:id="@+id/nowplaying_song_name"
+        style="@style/SongTitleTextView"
+        android:gravity="center"
+        tools:text="Nothing Else Matters" />
+
+    <LinearLayout style="@style/ButtonsLayout">
+
+        <TextView
+            android:id="@+id/nowplaying_album_name"
+            style="@style/AlbumTitleSongsList"
+            tools:text="Metallica" />
+
+        <ImageView
+            style="@style/BulletStyle"
+            android:contentDescription="@null"
+            android:src="@drawable/bullet" />
+
+        <TextView
+            android:id="@+id/nowplaying_artist_name"
+            style="@style/ArtistNameSongsList"
+
+            tools:text="Metallica" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ButtonsLayout">
+
+        <TextView
+            android:id="@+id/nowplaying_playing_time"
+            style="@style/PlayingTime"
+            tools:text="0:00" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            style="@style/SeekBarStyle"
+            android:progressTint="@color/colorPrimaryText" />
+
+        <TextView
+            android:id="@+id/nowplaying_total_time"
+            style="@style/PlayingTime"
+            tools:text="0:00" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ButtonsLayout">
+
+        <ImageView
+            android:id="@+id/rewind_button"
+            style="@style/RewForwButtons"
+            android:contentDescription="@string/button_rewind_desc"
+            android:src="@drawable/rewind_button" />
+
+        <ImageView
+            android:id="@+id/play_pause_button"
+            style="@style/RewForwButtons"
+            android:contentDescription="@string/button_play_desc"
+            android:src="@drawable/play_button" />
+
+        <ImageView
+            android:id="@+id/forward_button"
+            style="@style/RewForwButtons"
+            android:contentDescription="@string/button_forward_desc"
+            android:src="@drawable/forward_button" />
+    </LinearLayout>
+
+</LinearLayout>
