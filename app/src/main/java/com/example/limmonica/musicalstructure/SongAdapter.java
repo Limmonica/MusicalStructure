@@ -1,5 +1,6 @@
 package com.example.limmonica.musicalstructure;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -30,39 +31,63 @@ public class SongAdapter extends ArrayAdapter<Song> {
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
+        // Initialize the ViewHolder
+        ViewHolder viewHolder;
+
         // Check if an existing view is being reused, otherwise inflate the view
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.songs_item, parent, false);
+        if (convertView == null) {
+            LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
+            convertView = inflater.inflate(R.layout.songs_item, parent, false);
+            // Setup the ViewHolder
+            viewHolder = new ViewHolder();
+            // Find the TextView in the songs_item.xml layout with the ID song_title_text_view.
+            viewHolder.songTitle = convertView.findViewById(R.id.song_title_text_view);
+            // Find the TextView in the songs_item.xml layout with the ID artist_name_text_view.
+            viewHolder.songArtist = convertView.findViewById(R.id.artist_name_text_view);
+            // Find the TextView in the songs_item.xml layout with the ID album_title_text_view.
+            viewHolder.songAlbum = convertView.findViewById(R.id.album_title_text_view);
+            // Find the ImageView in the songs_item.xml layout with the ID album_cover_image_view.
+            viewHolder.songAlbumCoverImage = convertView.findViewById(R.id.album_cover_image_view);
+            // Store the holder tag with the view
+            convertView.setTag(viewHolder);
+        } else {
+            // Use the viewHolder instead of calling findViewById() on resource every time
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // Get the {@link Song} object located at this position in the list
         Song currentSong = getItem(position);
 
-        // Find the TextView in the songs_item.xml layout with the ID song_title_text_view.
-        TextView songTextView = listItemView.findViewById(R.id.song_title_text_view);
-        // Get the Songs name from the currentSong object and set this text on the Songs TextView
-        assert currentSong != null;
-        songTextView.setText(currentSong.getSongName());
-
-        // Find the TextView in the songs_item.xml layout which displays the artist name.
-        TextView artistTextView = listItemView.findViewById(R.id.artist_name_text_view);
-        // Get the Artist name from the currentSong object and set this text on the artist TextView
-        artistTextView.setText(currentSong.getArtistName());
-
-        // Find the TextView in the songs_item.xml layout which displays the album title.
-        TextView albumTextView = listItemView.findViewById(R.id.album_title_text_view);
-        // Get the Album name from the currentSong object and set this text on the album TextView
-        albumTextView.setText(currentSong.getAlbumName());
-
-        // Find the ImageView in the songs_item.xml layout with the which displays the album cover
-        ImageView albumCoverImageView = listItemView.findViewById(R.id.album_cover_image_view);
-        // Get the Resource ID from the currentSong object and set this image on the album cover ImageView
-        albumCoverImageView.setImageResource(currentSong.getAlbumImageResourceId());
-        // Make sure the view is visible
-        albumCoverImageView.setVisibility(View.VISIBLE);
+        // Assign values is the currentSong object is not null
+        if (currentSong != null) {
+            // Get the layout elements from the ViewHolder
+            // Get the song's name from the currentSong object and set this text on the song_title_text_view
+            viewHolder.songTitle.setText(currentSong.getSongName());
+            // Get the artist name from the currentSong object and set this text on the artist_name_text_view
+            viewHolder.songArtist.setText(currentSong.getArtistName());
+            // Get the album name from the currentSong object and set this text on the album_title_text_view
+            viewHolder.songAlbum.setText(currentSong.getAlbumName());
+            // Get the Resource ID from the currentSong object and set this image on the album_cover_image_view
+            viewHolder.songAlbumCoverImage.setImageResource(currentSong.getAlbumImageResourceId());
+            // Make sure the view is visible
+            viewHolder.songAlbumCoverImage.setVisibility(View.VISIBLE);
+        }
 
         // Return the whole list item layout (containing 2 TextViews) so that it can be shown in the ListView.
-        return listItemView;
+        return convertView;
+    }
+
+    /**
+     * Create a class {@link ViewHolder} to hold/cache the exact set of views that we need.
+     * A {@link ViewHolder} object stores each of the component views inside the tag field of the
+     * Layout, so it can immediately be accessed without the need to look them up repeatedly.
+     */
+
+    static class ViewHolder {
+        TextView songTitle;
+        TextView songArtist;
+        TextView songAlbum;
+        ImageView songAlbumCoverImage;
     }
 }

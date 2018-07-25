@@ -1,5 +1,6 @@
 package com.example.limmonica.musicalstructure;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -28,47 +29,70 @@ class AlbumAdapter extends ArrayAdapter<Album> {
         super(context, 0, albums);
     }
 
-
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
+        // Initialise the viewHolder
+        ViewHolder viewHolder;
+
         // Check if an existing view is being reused, otherwise inflate the view
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.albums_item, parent, false);
+        if (convertView == null) {
+            // inflate the layout
+            LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
+            convertView = inflater.inflate(R.layout.albums_item, parent, false);
+            // setup the viewHolder
+            viewHolder = new ViewHolder();
+            // Find the TextView in the albums_item.xml layout with the ID album_artist_text_view
+            viewHolder.albumArtist = convertView.findViewById(R.id.album_artist_text_view);
+            // Find the TextView in the album_item.xml layout with the ID album_name_text_view
+            viewHolder.albumTitle = convertView.findViewById(R.id.album_name_text_view);
+            // Find the TextView in the album_item.xml layout with the ID album_year_text_view
+            viewHolder.albumYear = convertView.findViewById(R.id.album_year_text_view);
+            // Find the ImageView in the album_item.xml layour with the ID album_image_view
+            viewHolder.albumCover = convertView.findViewById(R.id.album_image_view);
+            // store the holder tag with the view
+            convertView.setTag(viewHolder);
+        } else {
+            // use the viewHolder instead of calling findViewById() on resource every time
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // Get the {@link Album} object located at this position in the grid
         Album currentAlbum = getItem(position);
 
-        // Find the TextView in the albums_item.xml layout with the ID album_artist_text_view
-        TextView albumArtistTextView = listItemView.findViewById(R.id.album_artist_text_view);
-        // Get the Album Artist name from the currentAlbum object and set this text on the album_artist_text_view
-        assert currentAlbum != null;
-        albumArtistTextView.setText(currentAlbum.getAlbumArtistName());
-
-        // Find the TextView in the albums_item.xml layout with the ID album_name_text_view
-        TextView albumNameTextView = listItemView.findViewById(R.id.album_name_text_view);
-        // Get the Album name from the currentAlbum object and set this text on the album_name_text_view
-        albumNameTextView.setText(currentAlbum.getAlbumName());
-
-        // Find the TextView in the albums_item.xml layout with the ID album_year_text_view
-        TextView albumYearTextView = listItemView.findViewById(R.id.album_year_text_view);
-        // Get the Album release year from the currentAlbum object
-        int albumYear = currentAlbum.getAlbumYear();
-        // Transform the album release year from integer to string
-        String albumYearToString = Integer.toString(albumYear);
-        // Set the album release year on the album_year_text_view
-        albumYearTextView.setText(albumYearToString);
-
-        // Find the ImageView in the albums_item.xml layout with the ID album_image_view
-        ImageView albumImageView = listItemView.findViewById(R.id.album_image_view);
-        // Get the Album cover image from the currentAlbum object and set this resource on the album_image_view
-        albumImageView.setImageResource(currentAlbum.getAlbumResourceId());
-        // Make sure the view is visible
-        albumImageView.setVisibility(View.VISIBLE);
+        // Assign values if the object currentAlbum is not null
+        if (currentAlbum != null) {
+            // get the layout elements from the ViewHolder
+            // get the album artist name from the currentAlbum object and set this text on the album_artist_text_view
+            viewHolder.albumArtist.setText(currentAlbum.getAlbumArtistName());
+            // get the album title from the currentAlbum object and set this text on the album_name_text_view
+            viewHolder.albumTitle.setText(currentAlbum.getAlbumName());
+            // get and store the album year as integer from the currentAlbum object
+            int albumYear = currentAlbum.getAlbumYear();
+            // transform the album year integer into a string
+            String albumYearToString = Integer.toString(albumYear);
+            // set the album year text on the album_year_text_view
+            viewHolder.albumYear.setText(albumYearToString);
+            // get the album cover image from the currentAlbum object and set this image on the album_image_view
+            viewHolder.albumCover.setImageResource(currentAlbum.getAlbumResourceId());
+            // Make sure the view is visible
+            viewHolder.albumCover.setVisibility(View.VISIBLE);
+        }
 
         // Return the whole grid item layout containing 1 TextView and 1 ImageView so that it can be shown in the GridView
-        return listItemView;
+        return convertView;
+    }
+
+    /**
+     * Create a class {@link ViewHolder} to hold/cache the exact set of views that we need.
+     * A {@link ViewHolder} object stores each of the component views inside the tag field of the
+     * Layout, so it can immediately be accessed without the need to look them up repeatedly.
+     */
+    static class ViewHolder {
+        TextView albumArtist;
+        TextView albumTitle;
+        TextView albumYear;
+        ImageView albumCover;
     }
 }
