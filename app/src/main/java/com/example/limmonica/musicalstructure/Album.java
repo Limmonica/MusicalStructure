@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@link Album} represents an album of songs.
@@ -33,7 +34,7 @@ public class Album implements Parcelable {
     // The Artist object from which we'll retrieve the name of the Artist
     private Artist mArtist;
     // The list of Songs
-    private ArrayList<Song> mSongs;
+    private List<Song> mSongs;
 
     /**
      * Create a new object Album
@@ -109,7 +110,7 @@ public class Album implements Parcelable {
      *
      * @return the list of song
      */
-    public ArrayList<Song> getSongs() {
+    public List<Song> getSongs() {
         return mSongs;
     }
 

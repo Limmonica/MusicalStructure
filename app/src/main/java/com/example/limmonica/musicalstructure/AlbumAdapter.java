@@ -1,6 +1,5 @@
 package com.example.limmonica.musicalstructure;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -10,7 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * {@link AlbumAdapter} is an {@link ArrayAdapter} that can provide the layout for each grid item
@@ -25,7 +27,7 @@ class AlbumAdapter extends ArrayAdapter<Album> {
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
      * @param albums  is the list of {@link Album}s to be displayed.
      */
-    AlbumAdapter(Context context, ArrayList<Album> albums) {
+    AlbumAdapter(Context context, List<Album> albums) {
         super(context, 0, albums);
     }
 
@@ -33,29 +35,20 @@ class AlbumAdapter extends ArrayAdapter<Album> {
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-        // Initialise the viewHolder
-        ViewHolder viewHolder;
+        // Initialise the holder
+        ViewHolder holder;
 
-        // Check if an existing view is being reused, otherwise inflate the view
+        // If there is no existing view being reused
         if (convertView == null) {
-            // inflate the layout
-            LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.albums_item, parent, false);
-            // setup the viewHolder
-            viewHolder = new ViewHolder();
-            // Find the TextView in the albums_item.xml layout with the ID album_artist_text_view
-            viewHolder.albumArtist = convertView.findViewById(R.id.album_artist_text_view);
-            // Find the TextView in the album_item.xml layout with the ID album_name_text_view
-            viewHolder.albumTitle = convertView.findViewById(R.id.album_name_text_view);
-            // Find the TextView in the album_item.xml layout with the ID album_year_text_view
-            viewHolder.albumYear = convertView.findViewById(R.id.album_year_text_view);
-            // Find the ImageView in the album_item.xml layour with the ID album_image_view
-            viewHolder.albumCover = convertView.findViewById(R.id.album_image_view);
-            // store the holder tag with the view
-            convertView.setTag(viewHolder);
+            // Inflate the view
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.albums_item, parent, false);
+            // Setup the holder
+            holder = new ViewHolder(convertView);
+            // Store the holder tag with the convertView
+            convertView.setTag(holder);
         } else {
-            // use the viewHolder instead of calling findViewById() on resource every time
-            viewHolder = (ViewHolder) convertView.getTag();
+            // Otherwise use the holder instead of calling findViewById() on resource every time
+            holder = (ViewHolder) convertView.getTag();
         }
 
         // Get the {@link Album} object located at this position in the grid
@@ -63,21 +56,24 @@ class AlbumAdapter extends ArrayAdapter<Album> {
 
         // Assign values if the object currentAlbum is not null
         if (currentAlbum != null) {
-            // get the layout elements from the ViewHolder
-            // get the album artist name from the currentAlbum object and set this text on the album_artist_text_view
-            viewHolder.albumArtist.setText(currentAlbum.getAlbumArtistName());
-            // get the album title from the currentAlbum object and set this text on the album_name_text_view
-            viewHolder.albumTitle.setText(currentAlbum.getAlbumName());
-            // get and store the album year as integer from the currentAlbum object
+            // Get the layout elements from the ViewHolder
+            // Get the album artist name from the currentAlbum object and set this text on
+            // the album_artist_text_view
+            holder.albumArtist.setText(currentAlbum.getAlbumArtistName());
+            // Get the album title from the currentAlbum object and set this text on
+            // the album_name_text_view
+            holder.albumTitle.setText(currentAlbum.getAlbumName());
+            // Get and store the album year as integer from the currentAlbum object
             int albumYear = currentAlbum.getAlbumYear();
-            // transform the album year integer into a string
+            // Transform the album year integer into a string
             String albumYearToString = Integer.toString(albumYear);
-            // set the album year text on the album_year_text_view
-            viewHolder.albumYear.setText(albumYearToString);
-            // get the album cover image from the currentAlbum object and set this image on the album_image_view
-            viewHolder.albumCover.setImageResource(currentAlbum.getAlbumResourceId());
-            // Make sure the view is visible
-            viewHolder.albumCover.setVisibility(View.VISIBLE);
+            // Set the album year text on the album_year_text_view
+            holder.albumYear.setText(albumYearToString);
+            // Get the album cover image from the currentAlbum object and set this image on
+            // the album_cover_image_view
+            holder.albumCover.setImageResource(currentAlbum.getAlbumResourceId());
+            // Make sure the convertView is visible
+            holder.albumCover.setVisibility(View.VISIBLE);
         }
 
         // Return the whole grid item layout containing 1 TextView and 1 ImageView so that it can be shown in the GridView
@@ -90,9 +86,26 @@ class AlbumAdapter extends ArrayAdapter<Album> {
      * Layout, so it can immediately be accessed without the need to look them up repeatedly.
      */
     static class ViewHolder {
+        // Find and bind with the variable the TextView in the albums_item.xml layout with the ID
+        // album_artist_text_view
+        @BindView(R.id.album_artist_text_view)
         TextView albumArtist;
+        // Find and bind with the variable the TextView in the album_item.xml layout with the ID
+        // album_name_text_view
+        @BindView(R.id.album_name_text_view)
         TextView albumTitle;
+        // Find and bind with the variable the TextView in the album_item.xml layout with the ID
+        // album_year_text_view
+        @BindView(R.id.album_year_text_view)
         TextView albumYear;
+        // Find and bind with the variable the ImageView in the album_item.xml layout with the ID
+        // album_cover_image_view
+        @BindView(R.id.album_cover_image_view)
         ImageView albumCover;
+
+        ViewHolder(View view) {
+            // Pass the view to ButterKnife to bind it
+            ButterKnife.bind(this, view);
+        }
     }
 }

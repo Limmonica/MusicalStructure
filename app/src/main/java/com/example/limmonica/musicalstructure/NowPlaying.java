@@ -7,38 +7,47 @@ import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NowPlaying extends AppCompatActivity {
+
+    // Find and bind the image view which displays the cover image of the album with the variable
+    @BindView(R.id.nowplaying_album_imageview)
+    ImageView albumCoverImage;
+    // Find and bind the text view which displays the song title with the variable
+    @BindView(R.id.nowplaying_song_name)
+    TextView songName;
+    // Find and bind the text view which displays the artist name with the variable
+    @BindView(R.id.nowplaying_artist_name)
+    TextView artistName;
+    // Find and bind the text view which displays the album title with the variable
+    @BindView(R.id.nowplaying_album_name)
+    TextView albumName;
+    // Find and bind the text view which displays the current playing time with the variable
+    @BindView(R.id.nowplaying_playing_time)
+    TextView timePlaying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nowplaying);
 
+        // Bind the views using ButterKnife
+        ButterKnife.bind(this);
+
         // Retrieve the information of the clicked item passed via intent from the songs list
         Song song = getIntent().getParcelableExtra("clickedSong");
 
-        // Find the image view which displays the cover image of the album
-        ImageView albumCoverImage = findViewById(R.id.nowplaying_album_imageview);
         // Get the image resource ID from the Song object and set the cover image of the song
         albumCoverImage.setImageResource(song.getAlbumImageResourceId());
-
-        // Find the text view which displays the song title
-        TextView songName = findViewById(R.id.nowplaying_song_name);
         // Get the song title from the Song object and set this text to the song text view
         songName.setText(song.getSongName());
-
-        // Find the text view which displays the artist name
-        TextView artistName = findViewById(R.id.nowplaying_artist_name);
         // Get the artist name from the Song object and set this text to the artist text view
         artistName.setText(song.getArtistName());
-
-        // Find the text view which displays the album title
-        TextView albumName = findViewById(R.id.nowplaying_album_name);
         // Get the album name from the Song object and set this text to the album text view
         albumName.setText(song.getAlbumName());
 
-        // Find the text view which displays the current playing time
-        TextView timePlaying = findViewById(R.id.nowplaying_playing_time);
         // Initialise the current time of the playing song
         double getCurrentTimeSong = 0;
         // Display the current time of the playing song in minutes and seconds

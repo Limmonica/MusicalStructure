@@ -6,13 +6,13 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/artist_imageview"
+        android:id="@+id/artist_image_view"
         style="@style/ImageAlbumArtist"
         android:contentDescription="@string/artist_image_view"
         tools:src="@drawable/metallica_artist" />
 
     <TextView
-        android:id="@+id/artist_textview"
+        android:id="@+id/artist_name_text_view"
         style="@style/AlbumArtistName"
         android:textAllCaps="true"
         tools:text="Metallica" />

@@ -6,15 +6,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+
+    // Find and bind the view which displays the Library text view with the variable
+    @BindView(R.id.library)
+    TextView songsList;
+    // Find and bind the view which displays the Albums text view with the variable
+    @BindView(R.id.albums)
+    TextView albumsGridView;
+    // Find and bind the view which displays the Artists text view with the variable
+    @BindView(R.id.artists)
+    TextView artistsGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find the text view of the Library
-        TextView songsList = findViewById(R.id.library);
+        // Bind the views using ButterKnife
+        ButterKnife.bind(this);
+
         // Set a click listener on it
         songsList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Find the text view of the Albums
-        TextView albumsGridView = findViewById(R.id.albums);
         // Set a click listener on it
         albumsGridView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Find the text view of the Artists
-        TextView artistsGridView = findViewById(R.id.artists);
         // Set a click listener on it
         artistsGridView.setOnClickListener(new View.OnClickListener() {
             @Override

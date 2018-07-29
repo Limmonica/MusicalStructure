@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/album_image_view"
+        android:id="@+id/album_cover_image_view"
         style="@style/ImageAlbumArtist"
         android:contentDescription="@string/album_cover_image_desc"
         tools:src="@drawable/metallica_metallica" />

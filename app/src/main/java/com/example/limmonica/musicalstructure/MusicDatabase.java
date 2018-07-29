@@ -1,6 +1,7 @@
 package com.example.limmonica.musicalstructure;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * {@link MusicDatabase} is a Singleton class with getInstance() methods as a source of data for the
@@ -15,15 +16,15 @@ public class MusicDatabase {
     /**
      * Initialization of the ArrayList of Albums
      */
-    public ArrayList<Album> albums = new ArrayList<>();
+    public List<Album> albums = new ArrayList<>();
     /**
      * Initialization of the ArrayList of Songs
      */
-    private ArrayList<Song> songs = new ArrayList<>();
+    private List<Song> songs = new ArrayList<>();
     /**
      * Initialization of the ArrayList of Artists
      */
-    private ArrayList<Artist> artists = new ArrayList<>();
+    private List<Artist> artists = new ArrayList<>();
 
     /**
      * {@link}Private constructor restricted to this class
@@ -198,15 +199,15 @@ public class MusicDatabase {
         return (INSTANCE);
     }
 
-    public ArrayList<Artist> getArtists() {
+    public List<Artist> getArtists() {
         return artists;
     }
 
-    public ArrayList<Album> getAlbums() {
+    public List<Album> getAlbums() {
         return albums;
     }
 
-    public ArrayList<Song> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 }
