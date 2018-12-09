@@ -207,7 +207,7 @@ public class MusicDatabase {
         return albums;
     }
 
-    public List<Song> getSongs() {
+    List<Song> getSongs() {
         return songs;
     }
 }

@@ -46,7 +46,7 @@ public class Artist implements Parcelable {
      *
      * @return the artist name
      */
-    public String getArtistName() {
+    String getArtistName() {
         return mArtistName;
     }
 
@@ -55,7 +55,7 @@ public class Artist implements Parcelable {
      *
      * @return the resource ID
      */
-    public int getArtistImageResourceId() {
+    int getArtistImageResourceId() {
         return mArtistImageResourceId;
     }
 

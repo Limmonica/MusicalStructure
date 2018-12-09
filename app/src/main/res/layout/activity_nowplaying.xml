@@ -48,7 +48,8 @@
         <SeekBar
             android:id="@+id/seekbar"
             style="@style/SeekBarStyle"
-            android:progressTint="@color/colorPrimaryText" />
+            android:progressTint="@color/colorPrimaryText"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:id="@+id/nowplaying_total_time"

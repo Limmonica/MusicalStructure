@@ -59,7 +59,7 @@ public class Song implements Parcelable {
      *
      * @return the name of the song
      */
-    public String getSongName() {
+    String getSongName() {
         return mSongName;
     }
 
@@ -68,7 +68,7 @@ public class Song implements Parcelable {
      *
      * @return the duration of the song
      */
-    public int getSongDuration() {
+    int getSongDuration() {
         return mSongDuration;
     }
 
@@ -86,7 +86,7 @@ public class Song implements Parcelable {
      *
      * @return the name of the artist as string
      */
-    public String getArtistName() {
+    String getArtistName() {
         return getArtist().getArtistName();
     }
 
@@ -104,7 +104,7 @@ public class Song implements Parcelable {
      *
      * @return the name of the album as string
      */
-    public String getAlbumName() {
+    String getAlbumName() {
         return getAlbum().getAlbumName();
     }
 
@@ -113,7 +113,7 @@ public class Song implements Parcelable {
      *
      * @return the resource ID of the image as int
      */
-    public int getAlbumImageResourceId() {
+    int getAlbumImageResourceId() {
         return getAlbum().getAlbumResourceId();
     }
 
