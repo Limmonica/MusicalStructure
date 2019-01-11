@@ -1,4 +1,4 @@
-# Udacity Project no. 5: Multi-Screen Apps
+# Multi-Screen Apps
 
 # Musical Structure App
 
